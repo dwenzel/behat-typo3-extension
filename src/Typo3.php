@@ -1,7 +1,7 @@
 <?php
 namespace HeikoHardt\Behat\TYPO3Extension;
 
-use TYPO3\CMS\Core\Tests\FunctionalTestCase;
+use Nimut\TestingFramework\TestCase\FunctionalTestCase;
 use HeikoHardt\Behat\TYPO3Extension\ServiceContainer\Typo3BootstrapUtilityDynamic;
 use HeikoHardt\Behat\TYPO3Extension\ServiceContainer\Typo3BootstrapUtilityStatic;
 
@@ -47,8 +47,10 @@ class Typo3 extends FunctionalTestCase {
 
 		if (getenv('BEHAT_TYPO3_DOCROOT') && !defined('BEHAT_ROOT'))
 			define('BEHAT_ROOT', strtr(getenv('BEHAT_TYPO3_DOCROOT'), '\\', '/'));
+        var_dump($this->getDatabaseConnection());
+        die();
 
-		$this->typo3BootstrapUtility = defined('BEHAT_ROOT')
+        $this->typo3BootstrapUtility = defined('BEHAT_ROOT')
 			? new Typo3BootstrapUtilityStatic()
 			: new Typo3BootstrapUtilityDynamic();
 
